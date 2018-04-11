@@ -25,10 +25,10 @@ class I386JosElfGcc < Formula
                              "--prefix=#{prefix}",
                              "--enable-languages=c",
                              "--without-headers"
-      system 'make all-gcc'
+      system 'make all-gcc -j'
       system 'make install-gcc'
       FileUtils.ln_sf binutils.prefix/"i386-jos-elf", prefix/"i386-elf-jos"
-      system 'make all-target-libgcc'
+      system 'make all-target-libgcc -j'
       system 'make install-target-libgcc'
       FileUtils.rm_rf share/"man"/"man7"
     end

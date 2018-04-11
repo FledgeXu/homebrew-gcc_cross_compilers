@@ -11,7 +11,7 @@ class I386JosElfGdb < Formula
   def install
     mkdir 'build' do
       system '../configure', '--target=i386-jos-elf', "--prefix=#{prefix}", '--disable-werror'
-      system 'make'
+      system 'make -j'
       system 'make install'
       FileUtils.rm_rf share/"locale"
       FileUtils.mv lib, libexec

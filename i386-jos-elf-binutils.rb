@@ -18,7 +18,7 @@ class I386JosElfBinutils < Formula
                              '--disable-werror',
                              '--enable-gold=yes',
                              "--prefix=#{prefix}"
-      system 'make all'
+      system 'make all -j'
       system 'make install'
       FileUtils.mv lib, libexec
     end
