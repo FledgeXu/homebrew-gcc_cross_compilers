@@ -29,10 +29,10 @@ class I386ElfGcc < Formula
                              "--with-gmp=#{Formula["gmp"].opt_prefix}",
                              "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
                              "--with-mpc=#{Formula["libmpc"].opt_prefix}"
-      system 'make all-gcc'
+      system 'make all-gcc -j'
       system 'make install-gcc'
       FileUtils.ln_sf binutils.prefix/"i386-elf", prefix/"i386-elf"
-      system 'make all-target-libgcc'
+      system 'make all-target-libgcc -j'
       system 'make install-target-libgcc'
       FileUtils.rm_rf share/"man"/"man7"
     end

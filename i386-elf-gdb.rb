@@ -16,7 +16,7 @@ class I386ElfGdb < Formula
 
     mkdir 'build' do
       system '../configure', '--target=i386-elf', "--prefix=#{prefix}", '--disable-werror'
-      system 'make'
+      system 'make -j'
       system 'make install'
       #FileUtils.rm_rf share/"locale"
       #FileUtils.mv lib, libexec
