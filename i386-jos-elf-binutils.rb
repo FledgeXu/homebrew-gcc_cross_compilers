@@ -14,10 +14,7 @@ class I386JosElfBinutils < Formula
     ENV['LD'] = '/usr/local/bin/gcc-4.2'
 
     mkdir 'build' do
-      system '../configure', '--disable-nls', '--target=i386-jos-elf',
-                             '--disable-werror',
-                             '--enable-gold=yes',
-                             "--prefix=#{prefix}"
+      system '../configure', '--disable-nls', '--target=i386-jos-elf',"--prefix=#{prefix}"
       system 'make all -j'
       system 'make install'
       FileUtils.mv lib, libexec

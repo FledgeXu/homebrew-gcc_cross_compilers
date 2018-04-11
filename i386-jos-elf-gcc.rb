@@ -21,10 +21,14 @@ class I386JosElfGcc < Formula
     ENV['PATH'] += ":#{binutils.prefix/"bin"}"
 
     mkdir 'build' do
-      system '../configure', '--disable-nls', '--target=i386-jos-elf', '--disable-werror',
+      system '../configure', '--disable-nls', '--target=i386-jos-elf', 
                              "--prefix=#{prefix}",
-                             "--enable-languages=c",
-                             "--without-headers"
+                             "--without-headers",
+                             "--with-newlib",
+                             "--disable-threads",
+                             "--disable-shared",
+                             "--disable-libmudflap",
+                             "--disable-libssp"
       system 'make all-gcc -j'
       system 'make install-gcc'
       FileUtils.ln_sf binutils.prefix/"i386-jos-elf", prefix/"i386-elf-jos"
